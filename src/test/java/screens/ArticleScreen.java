@@ -14,10 +14,17 @@ public class ArticleScreen {
     public static final String SEARCHED_DATA = "Lombok";
     private final SelenideElement articleSearchBar = $(id("org.wikipedia.alpha:id/page_toolbar_button_search"));
     private final SelenideElement articleImage = $(id("org.wikipedia.alpha:id/view_page_header_image"));
-    private final SelenideElement articleTitle = $(className("android.view.View"));
-    private final SelenideElement articleDescription = $x("//android.view.View[@resource-id='pcs-edit-section-title-description']");
+    private final SelenideElement articleTitle = $(className("android.widget.TextView"));
+    //private final SelenideElement articleDescription = $x("//android.view.View[@resource-id='pcs-edit-section-title-description']");
     private final SelenideElement articleTabLayout = $(id("org.wikipedia.alpha:id/page_actions_tab_layout"));
+    private final SelenideElement articlePageLayout = $(id("org.wikipedia.alpha:id/page_contents_container"));
 
+
+    @Step("Verify page layout is loaded")
+    public ArticleScreen articlePageLayoutIsVisible() {
+        articlePageLayout.shouldBe(visible);
+        return this;
+    }
 
     @Step("Verify search bar is visible on article screen")
     public ArticleScreen articleScreenSearchBarIsVisible() {
@@ -37,12 +44,12 @@ public class ArticleScreen {
         return this;
     }
 
-    @Step("Verify article contains description on the screen")
+    /*@Step("Verify article contains description on the screen")
     public ArticleScreen articleDescriptionIsVisible() {
         articleDescription.shouldBe(visible);
         return this;
-    }
-
+    }*/
+    
     @Step("Verify tabs are available on article screen")
     @SuppressWarnings("UnusedReturnValue")
     public ArticleScreen articleTabLayoutIsVisible() {

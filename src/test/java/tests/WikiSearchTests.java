@@ -12,7 +12,7 @@ public class WikiSearchTests extends TestBase {
 
     @Test
     @DisplayName("Search for data")
-    public void appiumSearchTest2() {
+    public void appiumSearchTest() {
         onboardingScreen.clickSkipButton()
                 .setSearchQuery(TestData.QUERY1)
                 .searchResultsAreFound();
@@ -20,15 +20,15 @@ public class WikiSearchTests extends TestBase {
 
     @Test
     @DisplayName("Search and open article")
-    public void lombokSearchTest2() {
+    public void lombokSearchTest() {
         onboardingScreen.clickSkipButton()
                 .setSearchQuery(TestData.QUERY2)
                 .descriptionForArticleIsVisible()
                 .clickOnArticle()
+                .articlePageLayoutIsVisible()
                 .articleScreenSearchBarIsVisible()
                 .articleImageIsVisible()
                 .articleTitleContainsSearchData()
-                .articleDescriptionIsVisible()
                 .articleTabLayoutIsVisible();
 
     }

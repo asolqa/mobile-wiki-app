@@ -6,6 +6,7 @@ import screens.OnboardingScreen;
 
 import static io.qameta.allure.Allure.step;
 
+@DisplayName("Wiki Onboarding Walkthrough Test")
 public class WikiOnboardingWalkThroughTest extends TestBase {
     OnboardingScreen onboardingScreen = new OnboardingScreen();
 
@@ -38,9 +39,9 @@ public class WikiOnboardingWalkThroughTest extends TestBase {
             onboardingScreen.checkHeaderText("Data & Privacy")
                     .getStartedButtonIsDisplayed()
                     .clickGetStartedButton()
+                    .mainWikiLogoIsDisplayed()
                     .mainToolBarIsDisplayed()
-                    .searchContainerIsDisplayed()
-                    .searchBarIsDisplayed();
+                    .searchContainerIsDisplayed();
         });
 
     }

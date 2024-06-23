@@ -20,7 +20,7 @@ public class WikiAppSearchTests_withoutPO extends TestBase {
 
     @Test
     @DisplayName("Search for article")
-    void appiumSearchTest() {
+    void appiumSearchTest2() {
 
         step("Skip onboarding", () ->
                 $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click());
@@ -37,7 +37,7 @@ public class WikiAppSearchTests_withoutPO extends TestBase {
 
     @Test
     @DisplayName("Open and verify article")
-    void lombokSearchTest() {
+    void lombokSearchTest2() {
 
         step("Skip onboarding", () ->
                 $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click());
