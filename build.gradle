@@ -1,0 +1,59 @@
+plugins {
+    id 'java-library'
+    id "io.freefair.lombok" version "8.6"
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def selenideVersion = "6.13.0",
+    restAssuredVersion = "5.4.0",
+    allureVersion = "2.27.0",
+    junitVersion = "5.10.0",
+    slf4jVersion = "2.0.12",
+    appiumVersion = "8.3.0",
+    commonsVersion = "2.16.1"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
+dependencies {
+    //noinspection VulnerableLibrariesLocal
+    testImplementation(
+            "com.codeborne:selenide:$selenideVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.appium:java-client:8.3.0",
+            "io.rest-assured:rest-assured:$restAssuredVersion",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "io.appium:java-client:$appiumVersion",
+            "org.assertj:assertj-core:3.25.3",
+            "org.aeonbits.owner:owner:1.0.4",
+            "commons-io:commons-io:$commonsVersion",
+    )
+}
+
+tasks.withType(Test).configureEach {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
