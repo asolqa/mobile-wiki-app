@@ -1,6 +1,8 @@
 package driver;
 
 import com.codeborne.selenide.WebDriverProvider;
+import config.ConfigsHolder;
+import config.LocalRunnerConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import lombok.SneakyThrows;
@@ -14,37 +16,36 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 
-import static io.appium.java_client.remote.AutomationName.ANDROID_UIAUTOMATOR2;
-import static io.appium.java_client.remote.MobilePlatform.ANDROID;
 
+@SuppressWarnings("unused")
 public class LocalDriver implements WebDriverProvider {
+
+    private static final LocalRunnerConfig CONFIG = ConfigsHolder.INSTANCE.localRunnerConfig();
 
     @SneakyThrows
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
         UiAutomator2Options options = new UiAutomator2Options()
-                .setAutomationName(ANDROID_UIAUTOMATOR2)
-                .setPlatformName(ANDROID)
-                .setPlatformVersion("11.0")
-                .setDeviceName("Pixel_4_API_30")
+                .setAutomationName(CONFIG.automationName())
+                .setPlatformName(CONFIG.platformName())
+                .setPlatformVersion(CONFIG.platformVersion())
+                .setDeviceName(CONFIG.deviceName())
                 .setApp(getAppPath())
-                .setAppPackage("org.wikipedia.alpha")
-                .setAppActivity("org.wikipedia.main.MainActivity");
+                .setAppPackage(CONFIG.packageName())
+                .setAppActivity(CONFIG.mainActivity());
 
-        return new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options);
+        return new AndroidDriver(CONFIG.driverUrl(), options);
     }
 
     @SneakyThrows
     private String getAppPath() {
-        String appVersion = "app-alpha-universal-release.apk";
-        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia" +
-                "/releases/download/latest/" + appVersion;
-        String appPath = "src/test/resources/apps/" + appVersion;
+        URL appUrl = CONFIG.downloadUrl();
+        String appPath = "src/test/resources/apps/" + CONFIG.appVersion();
 
         File app = new File(appPath);
         if (!app.exists()) {
-            try (InputStream in = new URL(appUrl).openStream()) {
+            try (InputStream in = appUrl.openStream()) {
                 FileUtils.copyInputStreamToFile(in, app);
             }
         }

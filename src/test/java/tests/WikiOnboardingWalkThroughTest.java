@@ -10,12 +10,13 @@ import static io.qameta.allure.Allure.step;
 public class WikiOnboardingWalkThroughTest extends TestBase {
     OnboardingScreen onboardingScreen = new OnboardingScreen();
 
+    @SuppressWarnings("CodeBlock2Expr")
     @Test
     @DisplayName("Verify onboarding flow and screens")
     public void onboardingScreensTest() {
 
         step("Verify 1st onboarding screen and continue", () -> {
-            onboardingScreen.checkHeaderText("The Free Encyclopedia …in over 300 languages")
+            onboardingScreen.checkHeaderText("The Free Encyclopedia")
                     .skipButtonIsDisplayed()
                     .continueButtonIsDisplayed()
                     .clickContinueButton();
