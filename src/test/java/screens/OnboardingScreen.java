@@ -51,7 +51,7 @@ public class OnboardingScreen {
         return page(MainWikiScreen.class);
     }
 
-    @Step("Verify {expectedText} is visible")
+    @Step("Verify '{expectedText}' is visible")
     public OnboardingScreen checkHeaderText(String expectedText) {
         primaryText.shouldHave(text(expectedText));
         return this;

@@ -16,7 +16,7 @@ public class ResultScreen {
     private final ElementsCollection searchResults = $$(id("org.wikipedia.alpha:id/page_list_item_title"));
     private final SelenideElement resultDescription = $(id("org.wikipedia.alpha:id/page_list_item_description"));
 
-    @Step("Verify result are available")
+    @Step("Verify results are available")
     public void searchResultsAreFound() {
         searchResults.shouldHave(sizeGreaterThan(0));
     }
