@@ -3,7 +3,7 @@
 ---
 
 
-<a href="https://reqres.in/"><img src="./media/wikipedia_logo.png"/></a>
+<img src="./media/wikipedia_logo.png"/></a>
 
 ---
 
@@ -62,7 +62,7 @@ Local launch:
 ```bash  
 ./gradlew clean test -Ddriver.class.name=driver.LocalDriver
 ```
->Be sure you have installed all needed stuff as `Android Studio`, `node.js`, `Appuim` locally according to [instruction](https://autotest.how/appium-setup-for-local-android-tutorial-md)
+>Be sure you have installed all needed  pre-requisites/dependencies as `Android Studio`, `node.js`, `Appuim` locally according to [instruction](https://autotest.how/appium-setup-for-local-android-tutorial-md)
 
 Remote launch:
 ```bash  
