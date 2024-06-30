@@ -19,6 +19,7 @@
 - <a href="#allure-testops">Integration with Allure TestOps</a>
 - <a href="#jira">Integration with JIRA</a>
 - <a href="#telegram">Bot notifications in Telegram</a>
+- <a href="#video">Examples of test execution</a>
 
 
 <a id="tools"></a>
