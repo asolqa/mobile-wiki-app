@@ -106,11 +106,9 @@ Dashboard contains test runs statistics:
 All test cases:
 <img alt="Cases1" src="./media/reports/TestOpsAutomated.png">
 
-To execute tests from TestOps move to <a target="_blank" href="https://allure.autotests.cloud/project/4314/jobs">Jobs</a>:
+To execute tests from TestOps move to <a target="_blank" href="https://allure.autotests.cloud/project/4314/jobs">Jobs</a> and submit the launch:
 <img alt="Launch" src="./media/reports/LaunchJob1.png">
 
-Click to run Job, select needed/all items and submit launch:
-<img alt="Launch" src="./media/reports/LaunchJob.png">
 
 Launches:
 <img alt="Launch" src="./media/reports/Launches.png">
